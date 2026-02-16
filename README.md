@@ -1,127 +1,222 @@
 # Operational Metrics Engine (Google Sheets + Apps Script)
 
-A plug-and-play Google Sheets + Apps Script template that turns a raw dataset into a team-ready operational board with:
+> Lightweight operational workflow engine built on Google Sheets + Apps Script.  
+> Designed for teams that need structured metrics without a full BI stack.
+
+A plug-and-play Google Sheets + Apps Script framework that converts raw tabular data into a structured, team-ready operational board with persistent history, validations, protections, and optional monthly metric freezing.
+
+---
+
+## 🚀 English Version
+
+### Overview
+
+The Operational Metrics Engine is a configurable workflow layer that transforms raw input data into a structured operational board for teams.
+
+It provides:
 
 - Persistent **HISTORY** by unique record ID  
-- A protected **TEAM_BOARD** with editable fields, validations, and conditional formatting  
-- Optional **monthly snapshot** to freeze “previous period” metrics  
-- A simple **DASHBOARD** and execution **LOGS**  
+- A protected **TEAM_BOARD** with editable fields and validations  
+- Conditional formatting based on priority logic  
+- Optional **monthly snapshot** mechanism  
+- A basic **DASHBOARD** and execution **LOGS**
 
-This template is designed for operational teams that need a lightweight workflow without a full BI stack.
+This solution is ideal for teams that need operational structure without implementing a full BI or CRM stack.
 
-## Typical use cases
-- Sales / SDR operations (leads)
-- Customer Support (tickets)
-- Customer Success (portfolio)
-- Collections (accounts)
-- Backoffice operations (tasks/orders)
+---
 
-## How it works (pipeline)
-1) Paste/import your data into **INPUT_DATA**  
-2) Configure mappings and rules in **CONFIG**  
-3) Run **Operational Engine → Daily Update**  
-4) The team works on **TEAM_BOARD** (edits sync back to **HISTORY**)  
-5) Optional: run **Monthly Snapshot** to freeze previous-period metrics
+### Typical Use Cases
 
-## Sheets included
-- `ABOUT` — quick instructions + author/license
-- `CONFIG` — mappings and rules
-- `INPUT_DATA` — raw input dataset
-- `HISTORY` — persistent operational state
-- `TEAM_BOARD` — team-facing board (editable + protected)
-- `DASHBOARD` — basic KPI view (expandable)
-- `LOGS` — execution audit trail
+- Sales / SDR operations (lead management)
+- Customer Support (ticket workflows)
+- Customer Success (portfolio tracking)
+- Collections / Financial operations
+- Backoffice task management
+- Internal quality control tracking
 
-## Configuration (the core of customization)
-Edit the **CONFIG** sheet:
+---
 
-**Column mappings**
-- `MAP_ID` — unique identifier column name (e.g., `CNPJ`, `lead_id`, `ticket_id`)
-- `MAP_OWNER` — owner/assignee column name
-- `MAP_SUBJECT` — subject/name column
-- `MAP_CREATED_AT` — created date column
-- `MAP_PRIORITY` — priority/score column (0–4 recommended)
+### How It Works (Pipeline)
 
-**Operational behavior**
-- `EDITABLE_FIELDS` — fields the team can edit (semicolon-separated)
-- `STATUS_OPTIONS` — allowed values for STATUS (semicolon-separated)
-- `PROTECT_NON_EDITABLE` — `YES/NO`
-- `DAILY_OVERWRITE_OWNER` — `YES/NO`
+1. Paste or import your dataset into **INPUT_DATA**
+2. Configure mappings and rules in **CONFIG**
+3. Run **Operational Engine → Daily Update**
+4. The team operates inside **TEAM_BOARD**
+5. Edits automatically sync back to **HISTORY**
+6. (Optional) Run **Monthly Snapshot** to freeze previous-period metrics
 
-**Essentials**
-- `ESSENTIAL_COLUMNS` — extra columns to include (semicolon-separated)
-- `ESSENTIAL_BY_HEADER_COLOR` — `YES/NO` (detect “important” columns by header color)
-- `ESSENTIAL_COLOR_HEX`, `COLOR_TOLERANCE`
+---
 
-## License
+### Included Sheets
+
+- `ABOUT` — Quick instructions and license info
+- `CONFIG` — Column mappings and operational rules
+- `INPUT_DATA` — Raw dataset
+- `HISTORY` — Persistent operational layer
+- `TEAM_BOARD` — Editable team-facing board
+- `DASHBOARD` — KPI summary view
+- `LOGS` — Execution audit trail
+
+---
+
+### Configuration (Core Customization)
+
+All customization happens inside the **CONFIG** sheet.
+
+#### Column Mapping
+
+- `MAP_ID` — Unique identifier column (e.g., lead_id, ticket_id, CNPJ)
+- `MAP_OWNER` — Owner/assignee column
+- `MAP_SUBJECT` — Subject or name column
+- `MAP_CREATED_AT` — Created date column
+- `MAP_PRIORITY` — Priority/score column (recommended 0–4 scale)
+
+#### Operational Behavior
+
+- `EDITABLE_FIELDS` — Editable fields (semicolon-separated)
+- `STATUS_OPTIONS` — Allowed STATUS values (semicolon-separated)
+- `PROTECT_NON_EDITABLE` — YES/NO
+- `DAILY_OVERWRITE_OWNER` — YES/NO
+
+#### Essential Columns
+
+- `ESSENTIAL_COLUMNS` — Additional columns to include
+- `ESSENTIAL_BY_HEADER_COLOR` — YES/NO
+- `ESSENTIAL_COLOR_HEX`
+- `COLOR_TOLERANCE`
+
+---
+
+### Installation
+
+1. Create a new Google Sheet
+2. Go to Extensions → Apps Script
+3. Paste the contents of `Code.gs`
+4. Save and run `Install Structure`
+5. Configure the `CONFIG` sheet
+6. Paste your dataset into `INPUT_DATA`
+7. Run `Daily Update`
+
+---
+
+### Architecture Overview
+
+The engine follows a layered architecture:
+
+INPUT_DATA  
+→ Validation & Normalization  
+→ HISTORY (persistent state)  
+→ TEAM_BOARD (operational layer)  
+→ DASHBOARD + LOGS  
+
+This structure separates raw data from operational logic and team interaction.
+
+---
+
+### License
+
 This project is dual-licensed:
-- **AGPL-3.0** for open-source use (see `LICENSE`)
-- **Commercial license** for proprietary/closed-source distribution (see `COMMERCIAL_LICENSE.md`)
 
-## Author
+- AGPL-3.0 (open-source use) — see `LICENSE`
+- Commercial License (for proprietary/closed-source distribution) — see `COMMERCIAL_LICENSE.md`
+
+---
+
+### Author
+
 Eduardo Sousa
 
 ---
 
-# Motor de Métricas Operacionais (Google Sheets + Apps Script)
+## 🇧🇷 Versão em Português
 
-Um template “plug-and-play” em Google Sheets + Apps Script que transforma uma base crua em um board operacional pronto para time, com:
+### Visão Geral
+
+O Operational Metrics Engine é uma camada operacional configurável que transforma dados brutos em um board estruturado para equipes.
+
+Ele oferece:
 
 - **HISTORY** persistente por ID único  
-- **TEAM_BOARD** com campos editáveis, validações, travas e formatação condicional  
-- **Snapshot mensal (opcional)** para congelar métricas do “período anterior”  
+- **TEAM_BOARD** protegido com campos editáveis e validações  
+- Formatação condicional baseada em prioridade  
+- Mecanismo opcional de **snapshot mensal**  
 - **DASHBOARD** simples e **LOGS** de execução  
 
-Ideal para equipes operacionais que precisam de fluxo leve, sem depender de uma stack completa de BI.
+Ideal para equipes que precisam de organização operacional sem implementar uma stack completa de BI ou CRM.
 
-## Casos de uso comuns
-- Operação Comercial / SDR (leads)
-- Suporte (tickets)
-- Customer Success (carteira)
-- Cobrança (contas)
-- Operações / Backoffice (tarefas/ordens)
+---
 
-## Como funciona (pipeline)
-1) Cole/importe os dados em **INPUT_DATA**  
-2) Configure mapeamentos e regras em **CONFIG**  
-3) Rode **Operational Engine → Daily Update**  
-4) O time opera em **TEAM_BOARD** (as edições sincronizam para **HISTORY**)  
-5) Opcional: rode **Monthly Snapshot** para congelar métricas do período anterior
+### Casos de Uso
 
-## Abas incluídas
-- `ABOUT` — instruções rápidas + autor/licença
-- `CONFIG` — mapeamentos e regras
-- `INPUT_DATA` — base crua
-- `HISTORY` — estado persistente operacional
-- `TEAM_BOARD` — frente do time (editável + travada)
-- `DASHBOARD` — visão básica de indicadores (expandível)
-- `LOGS` — auditoria de execuções
+- Operação Comercial / SDR (gestão de leads)
+- Suporte (fluxo de tickets)
+- Customer Success (gestão de carteira)
+- Cobrança / Operações financeiras
+- Backoffice (gestão de tarefas)
+- Controle interno de qualidade
 
-## Configuração (coração da personalização)
-Edite a aba **CONFIG**:
+---
 
-**Mapeamento de colunas**
-- `MAP_ID` — coluna do ID único (ex.: `CNPJ`, `lead_id`, `ticket_id`)
-- `MAP_OWNER` — responsável/dono
-- `MAP_SUBJECT` — nome/assunto
-- `MAP_CREATED_AT` — data de criação
-- `MAP_PRIORITY` — prioridade/score (recomendado 0–4)
+### Como Funciona (Fluxo)
 
-**Comportamento operacional**
-- `EDITABLE_FIELDS` — campos editáveis (separados por `;`)
-- `STATUS_OPTIONS` — valores do STATUS (separados por `;`)
-- `PROTECT_NON_EDITABLE` — `YES/NO`
-- `DAILY_OVERWRITE_OWNER` — `YES/NO`
+1. Cole ou importe os dados em **INPUT_DATA**
+2. Configure os mapeamentos e regras na aba **CONFIG**
+3. Execute **Operational Engine → Daily Update**
+4. O time trabalha dentro do **TEAM_BOARD**
+5. As edições são sincronizadas automaticamente para o **HISTORY**
+6. (Opcional) Execute **Monthly Snapshot** para congelar métricas do período anterior
 
-**Essenciais**
-- `ESSENTIAL_COLUMNS` — colunas extras no board (separadas por `;`)
-- `ESSENTIAL_BY_HEADER_COLOR` — `YES/NO` (detectar colunas importantes pela cor do header)
-- `ESSENTIAL_COLOR_HEX`, `COLOR_TOLERANCE`
+---
 
-## Licença
+### Abas Incluídas
+
+- `ABOUT` — Instruções rápidas e informações de licença
+- `CONFIG` — Mapeamentos e regras operacionais
+- `INPUT_DATA` — Base bruta
+- `HISTORY` — Camada persistente
+- `TEAM_BOARD` — Board operacional editável
+- `DASHBOARD` — Resumo de indicadores
+- `LOGS` — Auditoria de execuções
+
+---
+
+### Configuração
+
+Toda a personalização é feita na aba **CONFIG**, sem necessidade de alterar o código principal.
+
+#### Mapeamento de Colunas
+
+- `MAP_ID` — Identificador único (ex.: lead_id, ticket_id, CNPJ)
+- `MAP_OWNER` — Responsável
+- `MAP_SUBJECT` — Nome ou assunto
+- `MAP_CREATED_AT` — Data de criação
+- `MAP_PRIORITY` — Prioridade/Score (escala recomendada 0–4)
+
+#### Comportamento Operacional
+
+- `EDITABLE_FIELDS` — Campos editáveis (separados por ;)
+- `STATUS_OPTIONS` — Valores permitidos para STATUS (separados por ;)
+- `PROTECT_NON_EDITABLE` — YES/NO
+- `DAILY_OVERWRITE_OWNER` — YES/NO
+
+#### Colunas Essenciais
+
+- `ESSENTIAL_COLUMNS` — Colunas adicionais no board
+- `ESSENTIAL_BY_HEADER_COLOR` — YES/NO
+- `ESSENTIAL_COLOR_HEX`
+- `COLOR_TOLERANCE`
+
+---
+
+### Licença
+
 Licença dupla:
-- **AGPL-3.0** para uso open-source (ver `LICENSE`)
-- **Licença comercial** para distribuição proprietária/fechada (ver `COMMERCIAL_LICENSE.md`)
 
-## Autor
+- AGPL-3.0 para uso open-source (ver `LICENSE`)
+- Licença comercial para distribuição proprietária (ver `COMMERCIAL_LICENSE.md`)
+
+---
+
+### Autor
+
 Eduardo Sousa
