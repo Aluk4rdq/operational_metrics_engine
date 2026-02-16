@@ -1,0 +1,6 @@
+record_id,owner,subject,created_at,priority,status,value,phone
+1001,Team A,Client Alpha,2026-02-01,2,New,1200,11999990001
+1002,Team B,Client Beta,2026-02-03,0,Waiting,0,11999990002
+1003,Team A,Client Gamma,2026-02-05,4,In Progress,9800,11999990003
+1004,Team C,Client Delta,2026-02-07,1,New,450,11999990004
+1005,Team B,Client Epsilon,2026-02-10,3,Follow-up,3100,11999990005
